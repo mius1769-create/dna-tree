@@ -142,6 +142,40 @@ html,body{background:var(--bg);font-family:'Segoe UI',-apple-system,sans-serif;
 /* flash animation when jumping */
 @keyframes flash{0%,100%{background:transparent}30%{background:rgba(126,200,80,0.3)}}
 .flash{animation:flash 1.4s ease}
+
+/* ════════════════════════════════════════
+   MOBILE — narrow viewports (phones)
+   ════════════════════════════════════════ */
+@media (max-width:600px){
+  #bar{flex-wrap:wrap;padding:8px 10px;gap:8px}
+  #bar h1{font-size:13px;flex:1 1 auto;min-width:0}
+  #searchbox{order:3;flex:1 1 100%;max-width:none}
+  .bbtn{font-size:11px;padding:5px 9px}
+  #srch-info{display:none}
+  #progress{order:2;margin-left:0}
+  #progress .pbar{width:80px}
+  #progress .plabel{display:none}
+  .ptip{right:auto;left:0;max-width:90vw;white-space:normal}
+
+  #crumbs.show{padding:6px 10px;max-height:none;font-size:10.5px}
+
+  #tree{padding:10px 8px 60px}
+  .node{flex-wrap:wrap;font-size:12px}
+  .cladename{font-size:12.5px;white-space:normal}
+  .equiv{font-size:11px;margin-left:6px;flex-basis:100%;order:3}
+  .ages{font-size:10px;margin-left:6px;white-space:normal}
+  .children{margin-left:3px;padding-left:6px;border-left:none}
+  .node{padding-left:1px}
+  .ages{display:block;margin-left:0;margin-top:1px}
+  .equiv{display:block;margin-left:0;margin-top:1px}
+  .hgdot{width:5px;height:5px;margin-right:3px}
+  .toggle{width:14px;font-size:10px}
+
+  .eratag{font-size:10px;padding:4px 8px;flex-wrap:wrap}
+  .eratag .desc{flex-basis:100%}
+
+  #foot{font-size:10.5px;padding:12px}
+}
 </style>
 </head>
 <body>

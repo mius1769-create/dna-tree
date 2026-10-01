@@ -336,7 +336,7 @@ function rebuildEAndMajorLinks(root){
  // Detach the previously mis-nested E clade from HIJK and descendants.
  function stripE(node){node.ch=node.ch.filter(c=>c.hg!=='E');node.ch.forEach(stripE);}
  stripE(root);
- const eRoot=n('E','E',null,null,['PF1449'],'',[ ]); byName.set('E',eRoot);
+ const eRoot=n('E','E',null,null,[],'',[ ]); byName.set('E',eRoot);
  for(const [name,parentName] of Object.entries(YFULL_E_PARENT)){
    const child=byName.get(name)||n(name,'E',null,null,[],'',[]);byName.set(name,child);
    const par=byName.get(parentName)|| (parentName==='E'?eRoot:null);
@@ -369,6 +369,8 @@ function indexTree(node, path){
 }
 indexTree(TREE,[]);
 if(UNPLACED_PANEL)indexTree(UNPLACED_PANEL,[]);
+// A panel marker belongs to its most specific listed branch, not also to an ancestor.
+for(const [marker,nodes] of Object.entries(SNP_INDEX)){if(nodes.length<2)continue;const terminal=nodes.filter(node=>!nodes.some(other=>other!==node&&other._path.length>node._path.length&&other._path.includes(node)));if(terminal.length<nodes.length){for(const node of nodes){if(!terminal.includes(node))node.equiv=node.equiv.filter(s=>s.toUpperCase()!==marker);}SNP_INDEX[marker]=terminal;}}
 
 // ════════════════════════════════════════
 // RENDER
